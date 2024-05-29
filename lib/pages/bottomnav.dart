@@ -47,19 +47,19 @@ class _BottomNavState extends State<BottomNav> {
           items: const [
             Icon(
               Icons.home_outlined,
-              color: Colors.black,
+              color: Colors.white,
             ),
             Icon(
               Icons.shopping_cart_outlined,
-              color: Colors.black,
+              color: Colors.white,
             ),
             Icon(
               Icons.wallet_outlined,
-              color: Colors.black,
+              color: Colors.white,
             ),
             Icon(
               Icons.person_outline,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ]),
       body: pages[currentTabIndex],

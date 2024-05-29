@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:trungdev_todolist/pages/details.dart';
 import 'package:trungdev_todolist/widget/widget_support.dart';
 
 class Home extends StatefulWidget {
@@ -58,41 +60,47 @@ class _HomeState extends State<Home> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                Container(
-                  padding: const EdgeInsets.all(4),
-                  child: Material(
-                    elevation: 5.0,
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      padding: const EdgeInsets.all(14),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            "assets/images/salad2.png",
-                            height: 150,
-                            width: 150,
-                            fit: BoxFit.cover,
-                          ),
-                          Text(
-                            "Salad Heathy",
-                            style: AppWidget.semiBoolTextFeildStyle(),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "Free and Lofichill",
-                            style: AppWidget.LighTextFeildStyle(),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "\$ 10.00",
-                            style: AppWidget.semiBoolTextFeildStyle(),
-                          )
-                        ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Details()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        padding: const EdgeInsets.all(14),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              "assets/images/salad2.png",
+                              height: 150,
+                              width: 150,
+                              fit: BoxFit.cover,
+                            ),
+                            Text(
+                              "Salad Heathy",
+                              style: AppWidget.semiBoolTextFeildStyle(),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Free and Lofichill",
+                              style: AppWidget.LighTextFeildStyle(),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "\$ 10.00",
+                              style: AppWidget.semiBoolTextFeildStyle(),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
