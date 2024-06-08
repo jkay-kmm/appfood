@@ -1,7 +1,29 @@
 # trungdev_todolist
 
 A new Flutter project.
+## Screens it contains:
 
+=> Onboarding
+
+=> Login
+
+=> Forgot Password
+
+=> Sign Up
+
+=> Complete Profile
+
+=> OTP Verification
+
+=> Home Page
+
+=> Product Details
+
+=> Order
+
+=> Profile
+
+=> Bottom Navigation Bar
 ## ✨ Requirements
 * Any Operating System (ie. MacOS X, Linux, Windows)
 * Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
