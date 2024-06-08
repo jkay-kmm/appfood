@@ -18,16 +18,17 @@ class _BottomNavState extends State<BottomNav> {
   late Widget currentPage;
   late Home home;
   late Order order;
-  late Profile profile;
+
   late Wallet wallet;
+  late Profile profile;
 
   @override
   void initState() {
     home = const Home();
     order = const Order();
-    profile = const Profile();
     wallet = const Wallet();
-    pages = [home, order, profile, wallet];
+    profile = const Profile();
+    pages = [home, order, wallet, profile];
     super.initState();
   }
 

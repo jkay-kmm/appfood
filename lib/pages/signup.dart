@@ -17,12 +17,13 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool _passwordVisible = false;
+
   registration() async {
     if (password != null) {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
-        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.red,
@@ -32,13 +33,10 @@ class _SignUpState extends State<SignUp> {
             ),
           ),
         );
-        Navigator.pushReplacement(
-            // ignore: use_build_context_synchronously
-            context,
+        Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const BottomNav()));
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
-          // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               backgroundColor: Colors.orangeAccent,
               content: Text(
@@ -46,7 +44,6 @@ class _SignUpState extends State<SignUp> {
                 style: TextStyle(fontSize: 18),
               )));
         } else if (e.code == 'email-already-in-use') {
-          // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               backgroundColor: Colors.orangeAccent,
               content: Text(
@@ -158,11 +155,23 @@ class _SignUpState extends State<SignUp> {
                               validator: (value) => value!.isEmpty
                                   ? "Please enter your password"
                                   : null,
-                              obscureText: true,
+                              obscureText: !_passwordVisible,
                               decoration: InputDecoration(
                                   hintText: "Password",
                                   hintStyle: AppWidget.semiBoolTextFeildStyle(),
                                   prefixIcon: const Icon(Icons.lock_outline),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _passwordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _passwordVisible = !_passwordVisible;
+                                      });
+                                    },
+                                  ),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20))),
                             ),

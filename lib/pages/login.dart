@@ -18,6 +18,8 @@ class _LogInState extends State<LogIn> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool _passwordVisible = false;
+
   useLogin() async {
     try {
       await FirebaseAuth.instance
@@ -124,11 +126,23 @@ class _LogInState extends State<LogIn> {
                               controller: passwordController,
                               validator: (value) =>
                                   value!.isEmpty ? "Enter Password" : null,
-                              obscureText: true,
+                              obscureText: !_passwordVisible,
                               decoration: InputDecoration(
                                   hintText: "Password",
                                   hintStyle: AppWidget.semiBoolTextFeildStyle(),
                                   prefixIcon: const Icon(Icons.lock_outline),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _passwordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _passwordVisible = !_passwordVisible;
+                                      });
+                                    },
+                                  ),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20))),
                             ),
